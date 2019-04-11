@@ -1,0 +1,53 @@
+""" This script performs various statistical tests """
+
+import pandas as pd
+from scipy import stats
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
+from statsmodels.stats.multicomp import MultiComparison
+
+
+data = pd.read_csv("corrpit.csv", sep='\t')
+
+
+# Create multiindex, essentially two sets of labels
+data.set_index(["Ga (at%)", "Sample shape"], inplace=True)
+
+
+# Perform 2-sample t-test for rod versus ribbon for each Ga content
+for e in list(data.columns):
+    print(e)
+    print("Ga (at%)\tstatistic\tp-value")
+    for ga in [0, 2, 4, 8, 10]:
+        ribb = data.loc[(ga, "Ribbon"), e]
+        rod = data.loc[(ga, "Rod"), e]
+        st = stats.ttest_ind(rod, ribb)
+        s = list(st)
+        print("{}\t{:.3f}\t{:.3f}".format(ga, s[0], s[1]))
+    print("")
+
+
+# Perform ANOVA to check effect of Ga
+for col in list(data.columns):
+    e = col.split(' ', maxsplit=1)[0]
+    anova_ga = stats.f_oneway(data.loc[(0, "Rod"), col],
+                              data.loc[(1, "Rod"), col],
+                              data.loc[(2, "Rod"), col],
+                              data.loc[(4, "Rod"), col],
+                              data.loc[(8, "Rod"), col],
+                              data.loc[(10, "Rod"), col])
+    print("Q: Is there a significant effect of Ga content on {0} for rods?  Using ANOVA.  H0: no difference between the means of {0} for each Ga content.  Result of ANOVA analysis:\n",format(e), anova_ga, "\n")
+
+
+"""
+# Perform Tukey HSD test on the effect of Ga on Ecorr for rods
+sel = data.loc[([0, 1, 2, 4, 8, 10], r), ecorr_col]
+mc = MultiComparison(sel, sel.index.get_level_values("Ga (at%)"))
+mc_results = mc.tukeyhsd()
+print("Tukey HSD on effect of Ga on Ecorr for rods\n", mc_results, "\n")
+
+
+# Perform simple 2-sample t-test between rod 2Ga and 10Ga
+ga_2vs10 = stats.ttest_ind(data.loc[(2, r), ecorr_col], data.loc[(10, r), ecorr_col])
+print("2-samp t-test on rod 2Ga vs 10Ga\n", ga_2vs10, "\n")
+
+""""

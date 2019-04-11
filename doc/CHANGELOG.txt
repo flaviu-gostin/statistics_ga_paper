@@ -1,0 +1,30 @@
+## TO DO
+* Write README
+* License
+* gitignore file
+
+## Remember:
+* Keep track of steps in Makefile
+
+
+## 2019-04-10
+* Finished up two-way ANOVA
+* Print statistics results to results/statistics.txt
+
+## 2019-04-09
+* Started two-way ANOVA.  Got very low p-value.
+* Plot data for exploratory data analysis, Ecorr, Epit and npit (scatter matrix figure)
+* Did a lot of polishing of code to print out results nicely
+* Renamed columns to make them compatible to Python names, necessary for being able to write formulae for statsmodels
+
+## 2019-04-08
+* Set up the project directory with the proper structure, i.e. data/, results/, doc/, src/, etc
+* Wrote code for one-way ANOVA of Ga effect
+* Create virtual environment with python3
+* Create Makefile
+* Wrote small script to calculate pitting overpotential
+
+## Before 2019-04-08, Monday
+* Wrote script to perform two-samples t-test on rod versus ribbon for each Ga content individually, for Ecorr and Epit.
+* Arranged data properly for statistical calculations, i.e. one row corresponding to one experiment.
+* Got Ecorr and Epit data from student.
