@@ -1,11 +1,14 @@
 ## TO DO
-* Write README
-* License
-* gitignore file
 
 ## Remember:
 * Keep track of steps in Makefile
 
+
+## 2019-04-15
+* Wrote README
+* Added GPLv3 license
+* .gitignore
+* added manually requirements matplotlib, scipy, pandas and statsmodels
 
 ## 2019-04-10
 * Finished up two-way ANOVA
