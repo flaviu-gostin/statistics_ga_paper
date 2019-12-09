@@ -13,8 +13,8 @@ two-way ANOVA, one-way ANOVA, t-tests.
 
 ## To repeat the calculation:
 
-I only tested this project under GNU/Linux with Python3.5.2.  It will most
-probably not work with Python2.
+I only tested this project under GNU/Linux with Python3.5.2
+It will most probably not work with Python2
 
 - open a terminal
 - `cd Desktop` or choose another directory where you want this project
@@ -23,8 +23,8 @@ create a new directory named *statistics_ga_paper/*
 - `cd statistics_ga_paper`
 - `virtualenv --python=python3 venv` to create a virtual environment
 - `source venv/bin/activate` to activate the virtual environment
-- `pip install -r requirements.txt` to install required Python libraries
+- `pip install -r requirements.txt` to install required libraries
 - `make analysis` to perform the calculations and generate scatter plots for
-exploratory data analysis using the receipes in the *Makefile* file.
+exploratory data analysis.
 
-If you encounter any problems, please create an "issue", see the tab "Issues" above.
+If you encounter any problems, please create an "issue".  See the tab "Issues" above.
